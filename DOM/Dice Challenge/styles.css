@@ -1,0 +1,41 @@
+.container {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+.dice {
+  text-align: center;
+  display: inline-block;
+
+}
+
+body {
+  background-color: #000000;
+}
+
+h2 {
+  margin: 30px;
+  font-family: 'Inter';
+  text-shadow: 5px 0 #3d3d3d; 
+  font-size: 3rem;
+  color: #02c4ff;
+}
+
+p {
+  font-size: 2rem;
+  color: #02c4ff;
+  font-family: 'Inter';
+}
+
+img {
+  width: 80%;
+}
+
+footer {
+  margin-top: 5%;
+  color: #EEEEEE;
+  text-align: center;
+  font-family: 'Inter';
+
+}

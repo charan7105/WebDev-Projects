@@ -1,0 +1,21 @@
+db.products.insert(
+    {
+        _id : 2,
+        pname: "Pencil",
+        pprice: 1.4,
+        stock: 21,
+        reviews:[
+            {
+                authorname: "Charan",
+                rating:5, 
+                review : "Best Pencil Ever..!"
+            },
+            {
+                authorname: "Kalyani",
+                rating: 4,
+                review : "Good..!"
+            }
+        ]
+
+    }
+)

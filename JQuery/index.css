@@ -1,0 +1,16 @@
+body
+{
+    background-color: aquamarine;
+}
+
+.HelloCSS
+{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 50px;
+    color: black;
+}
+
+button
+{
+    background-color: antiquewhite;
+}

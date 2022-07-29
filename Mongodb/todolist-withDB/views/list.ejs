@@ -1,0 +1,29 @@
+<%- include("header") -%> 
+
+    <div class="box" id="heading">
+    <h1> <%=listTitle%> </h1>
+    </div>
+
+    <div class="box">
+
+        <% for(var i=0; i<NewListitems.length; i++) { %>
+        <form action="/delete" method="post">
+         <!-- What exactly we did is now when we press checkbox the item need to delete for that we just made another form which we linked to a new route that delete route -->
+        <div class="item">
+            <input type="checkbox" value =<%= NewListitems[i]._id %> name="checkbox" onChange="this.form.submit()">
+            <!-- Now we did is here there is no submit method to anything so to make it happen to get form submit we need onchange method of js and givig a name to it do manupulate furture -->
+            <p> <%= NewListitems[i].I_name %> </p> 
+        </div>
+        </form>
+        <% } %>
+
+
+      <form action="/" class="form" method="post">
+
+        <input type="text" name="newitem" placeholder="Add New Item" autocomplete="off" required>
+        <button type="submit" name="list" value=<%= listTitle %>>+</button>
+
+    </form>
+    </div>
+
+<%- include("footer") -%> 
