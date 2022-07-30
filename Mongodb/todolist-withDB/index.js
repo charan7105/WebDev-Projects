@@ -130,15 +130,28 @@ app.post("/", function(req,res)
 {
 
     const itemName = req.body.newitem;
-    const item = new Item({
-        I_name : itemName
-    });
-    item.save(); //db.collection.save() Method
+    //What ever we entered in the input mode.
+    const listname =  req.body.list;
+    //It will tell you at which page the button clicked
+    const item = new Item({I_name : itemName});
 
-    //Why we use again here is after saving its going save in db and make it in browser to we just need to redirect to the / Route.
-
-    res.redirect("/");
-    //If we dont do use this res.redirect means it won't be render immediately after initialzing. when we run node index.js again then it will appear, so this is what exactly res.redirect("/") do.
+    if(listname==="Today")
+    {
+        item.save(); //db.collection.save() Method
+    
+        //Why we use again here is after saving its going save in db and make it in browser to we just need to redirect to the / Route.
+    
+        res.redirect("/");
+        //If we dont do use this res.redirect means it won't be render immediately after initialzing. when we run node index.js again then it will appear, so this is what exactly res.redirect("/") do.
+    }
+    else
+    {
+        List.findOne({I_name : listname}, function(err,avalue){
+            avalue.items.push(item);
+            avalue.save();
+            res.redirect("/"+ listname);
+        })
+    }
 });
 
 //------------------------------------------------
