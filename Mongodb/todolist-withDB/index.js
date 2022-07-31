@@ -164,7 +164,8 @@ app.post("/", function(req,res)
 
 //------------------------------------------------
 
-app.post("/delete",function(req,res){
+app.post("/delete",function(req,res)
+{
     const delitem = req.body.checkbox;
     const listname = req.body.listname;
 
