@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const _ = require("lodash");
 const path = require("path");
 // What Exactly we did is we have reduces our complexity of code by making a fucn in another file and requiring it in here.
 
@@ -93,18 +94,25 @@ app.get("/", function(req,res){
 app.get("/:customListName",function(req,res)
 {
     console.log("First")
-    const customListName = req.params.customListName;
+    //For Testing
+
+    const customListName = _.capitalize(req.params.customListName);
 
     List.find({I_name: customListName},function(err, avalue)
     {
         console.log("Hiii 1")
+        //For Testing
+
         if(!err)
         {
             console.log("Hiii 2")
+            //For Testing
+
             console.log(avalue);
             if(avalue.length===0)
             {
                 console.log("Hiii 3")
+                
                //Create a new list
                const list = new List(
                 {
@@ -158,18 +166,32 @@ app.post("/", function(req,res)
 
 app.post("/delete",function(req,res){
     const delitem = req.body.checkbox;
-    Item.findByIdAndRemove(delitem,function(err)
-    {   //Its very Important to give the call backs.
-        if(err){
-                console.log("Some error it there for line of code at 100 Line no")
-               }
+    const listname = req.body.listname;
+
+    if(listname==="Today")
+    {
+      Item.findByIdAndRemove(delitem,function(err)
+          {   //Its very Important to give the call backs.
+              if(err)
+              {
+                console.log("Some error is there for line of code at 170 Line no")
+              }
                else
-                {
-                    console.log("Sucessfully deleted the selected one.");
-                } 
-    });
-    res.redirect("/");
-    //If we dont do use this res.redirect means it won't be render immediately after initialzing. when we run node index.js again then it will appear, so this is what exactly res.redirect("/") do.
+              {
+                console.log("Sucessfully deleted the selected one.");
+              }
+               res.redirect("/");
+             //If we dont do use this res.redirect means it won't be render immediately after initialzing. when we run node index.js again then it will appear, so this is what exactly res.redirect("/") do. 
+          });
+    }
+    else
+    {
+        List.findOneAndUpdate({I_name: listname},{$pull: {items: {_id: delitem}}},function(err,avalue){
+            if(!err){
+                res.redirect("/"+listname);
+            }
+        });
+    }
 });
 
 //----------------------------------------------
