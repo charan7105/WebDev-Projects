@@ -20,7 +20,8 @@ app.use(bodyParser.urlencoded({extended:true})); //its a middle ware to proceess
 
 //-------------------------------------------
 
-mongoose.connect("mongodb://localhost:27017/todolistDB");
+// mongoose.connect("mongodb://localhost:27017/todolistDB");
+mongoose.connect("mongodb+srv://Charan7105:Charan7105@cluster0.ss47kdp.mongodb.net/todolist")
 
 const itemSchema = 
 {
