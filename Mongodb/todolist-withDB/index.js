@@ -12,8 +12,6 @@ const app = express();
 
 //Hello Pends Bye Pends
 
-const workItems = [];
-
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'public')));
 
