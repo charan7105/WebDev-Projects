@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
 const path = require("path");
+require("dotenv").config();
 // What Exactly we did is we have reduces our complexity of code by making a fucn in another file and requiring it in here.
 
 // console.log(date());
@@ -21,7 +22,7 @@ app.use(bodyParser.urlencoded({extended:true})); //its a middle ware to proceess
 //-------------------------------------------
 
 // mongoose.connect("mongodb://localhost:27017/todolistDB");
-mongoose.connect("mongodb+srv://Charan7105:Charan7105@cluster0.ss47kdp.mongodb.net/todolist")
+mongoose.connect(process.env.MONGO_URL);
 
 const itemSchema = 
 {
