@@ -27,11 +27,11 @@ app.get("/", function(req, res){
 });
 
 app.get("/about", function(req, res){
-  res.render("about", {aboutContent: aboutContent});
+  res.render("about", {contentAbout: aboutContent});
 });
 
 app.get("/contact", function(req, res){
-  res.render("contact", {contactContent: contactContent});
+  res.render("contact", {contentContact : contactContent});
 });
 
 app.get("/compose", function(req, res){
@@ -58,7 +58,7 @@ app.get("/posts/:postName", function(req, res){
 
   posts.forEach(function(post){
     const storedTitle = _.lowerCase(post.title);
-   // Why we use loadash here is to convert the input to lowercase
+    // Why we use loadash here is to convert the input to lowercase
     if (storedTitle === requestedTitle) {
       res.render("post", {
         title: post.title,
