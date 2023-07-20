@@ -4,9 +4,8 @@ randomNumber1 = Math.floor(randomNumber1)+1;
 
 var randompicture = "dice"+randomNumber1+".png";
 var onesource = "/DOM/Dice Challenge/images/"+randompicture;
-var image1 = document.querySelectorAll("img")[0];
-image1.setAttribute("src", onesource );
-
+var image1 = document.getElementsByClassName("img1")[0];
+image1.src = onesource;
 //__________________________________________________________________________
 
 var randomNumber2 = Math.random();
